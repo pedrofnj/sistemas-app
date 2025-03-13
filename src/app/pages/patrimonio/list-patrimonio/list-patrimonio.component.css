@@ -1,0 +1,9 @@
+.col-nome {
+  width: 40%; /* Ajuste a largura conforme necessário */
+}
+.col-situacao {
+  width: 15%; /* Ajuste a largura conforme necessário */
+}
+.align-content-lg-center {
+  align-content: center;
+}

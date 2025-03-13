@@ -1,0 +1,112 @@
+<main class="mt-5">
+  <div class="container">
+    <div class="row justify-content-center">
+      <h1>Patrimônio</h1>
+      <div class="card">
+        <div class="card-body">
+          Cadastrar Patrimônio
+        </div>
+      </div>
+
+      <form #patrimonioForms="ngForm" (ngSubmit)="onSubmit()" class="row g-3 border" style="padding: 20px;">
+
+        <div class="col-md-2">
+          <label for="codigo" class="form-label">Nº Patrimônio *</label>
+          <input type="text" class="form-control" name="codigo" id="codigo" [(ngModel)]="patrimonio.codigo" required
+                 [ngClass]="{'is-invalid': patrimonioForms.submitted && !patrimonio.codigo || codigo.touched && !patrimonio.codigo}"
+                 #codigo="ngModel"
+                 [maxLength]="8">
+          <div *ngIf="(patrimonioForms.submitted && !patrimonio.codigo) || (codigo.touched && !patrimonio.codigo)"
+               class="invalid-feedback">
+            O campo Nº Patrimônio é obrigatório.
+          </div>
+        </div>
+
+        <div class="col-md-4">
+          <label for="dataCadastro" class="form-label">Data de Cadastro</label>
+          <input type="date" class="form-control" name="dataCadastro" [(ngModel)]="patrimonio.dataCadastro"
+                 id="dataCadastro" disabled>
+        </div>
+
+        <div class="col-md-6">
+          <label for="nome" class="form-label">Nome *</label>
+          <input type="text" class="form-control" id="nome" name="nome" [(ngModel)]="patrimonio.nome" required
+                 [ngClass]="{'is-invalid': patrimonioForms.submitted && !patrimonio.nome || nome.touched && !patrimonio.nome}"
+                 #nome="ngModel">
+          <div *ngIf="(patrimonioForms.submitted && !patrimonio.nome) || (nome.touched && !patrimonio.nome)"
+               class="invalid-feedback">
+            O campo Nome é obrigatório.
+          </div>
+        </div>
+
+        <div class="col-md-4">
+          <label for="modelo" class="form-label">Modelo</label>
+          <input type="text" class="form-control" id="modelo">
+        </div>
+
+        <div class="col-md-4">
+          <label for="numeroSerie" class="form-label">Número de Série</label>
+          <input type="text" class="form-control" id="numeroSerie" name="numeroSerie"
+                 [(ngModel)]="patrimonio.numeroSerie">
+        </div>
+
+        <div class="col-md-4">
+          <label for="dataAquisicao" class="form-label">Data de Aquisição *</label>
+          <input type="date" class="form-control" id="dataAquisicao" name="dataAquisicao"
+                 [(ngModel)]="patrimonio.dataAquisicao" required
+                 [ngClass]="{'is-invalid': patrimonioForms.submitted && !patrimonio.dataAquisicao || dataAquisicao.touched && !patrimonio.dataAquisicao}"
+                 #dataAquisicao="ngModel">
+          <div
+            *ngIf="(patrimonioForms.submitted && !patrimonio.dataAquisicao) || (dataAquisicao.touched && !patrimonio.dataAquisicao)"
+            class="invalid-feedback">
+            O campo Data de Aquisição é obrigatório.
+          </div>
+        </div>
+
+        <div class="col-12">
+          <label for="descricao" class="form-label">Descrição</label>
+          <input type="text" class="form-control" id="descricao" placeholder="Descrição do patrimônio" name="descricao"
+                 [(ngModel)]="patrimonio.descricao">
+        </div>
+
+        <div class="col-4">
+          <label for="situacao" class="form-label">Situação</label>
+          <select class="form-select" id="situacao" name="situacao" [(ngModel)]="patrimonio.situacao">
+            <option value="" disabled>Selecione...</option>
+            <option *ngFor="let status of situacoes" [value]="status.value">{{ status.viewValue }}</option>
+          </select>
+        </div>
+
+        <div class="col-4">
+          <label for="tipoAquisicao" class="form-label">Tipo de Aquisição *</label>
+          <select class="form-select" id="tipoAquisicao">
+            <option selected>Selecione...</option>
+            <option value="compra">Compra</option>
+            <option value="doacao">Doação</option>
+            <option value="transferencia">Transferência</option>
+          </select>
+        </div>
+
+        <div class="col-md-4">
+          <label for="valor" class="form-label">Valor R$ *</label>
+          <input type="text" class="form-control" id="valor" placeholder="Valor do patrimônio" name="valor"
+                 [(ngModel)]="patrimonio.valor" required
+                 [ngClass]="{'is-invalid': patrimonioForms.submitted && !patrimonio.valor || valor.touched && !patrimonio.valor}"
+                 #valor="ngModel">
+          <div *ngIf="(patrimonioForms.submitted && !patrimonio.valor) || (valor.touched && !patrimonio.valor)"
+               class="invalid-feedback">
+            O campo Valor é obrigatório.
+          </div>
+        </div>
+
+        <div class="col-12">
+          <button type="submit" class="btn btn-primary">
+            <i class="fa-solid fa-floppy-disk" style="color: #ffffff;"></i> Salvar
+          </button>
+        </div>
+
+      </form>
+
+    </div>
+  </div>
+</main>
