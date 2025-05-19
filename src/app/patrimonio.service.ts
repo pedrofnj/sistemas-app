@@ -2,6 +2,7 @@ import {Injectable} from '@angular/core';
 import {Observable} from 'rxjs';
 import {Patrimonio} from './pages/patrimonio/Patrimonio';
 import {HttpClient} from '@angular/common/http';
+import {Setores} from "./pages/patrimonio/Setores";
 
 @Injectable({
   providedIn: 'root'
@@ -23,6 +24,10 @@ export class PatrimonioService {
 
   getById(id: number): Observable<Patrimonio> {
     return this.http.get<Patrimonio>(`${this.apiUrl}/byId/${id}`);
+  }
+
+  getSetorAll(): Observable<Setores[]> {
+    return this.http.get<Setores[]>(`${this.apiUrl}/setores`);
   }
 
 }

@@ -63,13 +63,28 @@
           </div>
         </div>
 
-        <div class="col-12">
-          <label for="descricao" class="form-label">Descrição</label>
-          <input type="text" class="form-control" id="descricao" placeholder="Descrição do patrimônio" name="descricao"
-                 [(ngModel)]="patrimonio.descricao">
+        <div class="row">
+          <div class="col-md-8">
+            <label for="descricao" class="form-label">Descrição</label>
+            <input type="text" class="form-control" id="descricao" placeholder="Descrição do patrimônio" name="descricao" [(ngModel)]="patrimonio.descricao">
+          </div>
+          <div class="col-md-4">
+            <label for="setor" class="form-label">Setor</label>
+            <select class="form-select" id="setor" name="setor" [(ngModel)]="patrimonio.idSetor" required #idSetor="ngModel"
+              [ngClass]="{ 'is-invalid': patrimonioForms.submitted && !patrimonio.idSetor }"
+            >
+              <option value="" disabled>Selecione...</option>
+              <option *ngFor="let setor of setores" [value]="setor.id">
+                {{ setor.nome }}
+              </option>
+            </select>
+            <div *ngIf="patrimonioForms.submitted && !patrimonio.idSetor" class="invalid-feedback">
+              O campo Setor é obrigatório.
+            </div>
+          </div>
         </div>
 
-        <div class="col-4">
+        <div class="col-md-4">
           <label for="situacao" class="form-label">Situação</label>
           <select class="form-select" id="situacao" name="situacao" [(ngModel)]="patrimonio.situacao">
             <option value="" disabled>Selecione...</option>
@@ -77,7 +92,7 @@
           </select>
         </div>
 
-        <div class="col-4">
+        <div class="col-md-4">
           <label for="tipoAquisicao" class="form-label">Tipo de Aquisição *</label>
           <select class="form-select" id="tipoAquisicao">
             <option selected>Selecione...</option>
