@@ -5,6 +5,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Patrimonio } from "../Patrimonio";
 import { PatrimonioService } from "../../../patrimonio.service";
 import { Setores } from "../Setores";
+import {Status} from "../Status";
 
 @Component({
   selector: 'app-forms-patrimonio',
@@ -20,11 +21,7 @@ export class FormsPatrimonioComponent implements OnInit {
 
   patrimonio: Patrimonio = new Patrimonio();
   setores: Setores[] = [];
-
-  situacoes: { value: string, viewValue: string }[] = [
-    { value: 'Ativo', viewValue: 'Ativo' },
-    { value: 'Em Manutenção', viewValue: 'Em Manutenção' },
-  ];
+  patrimonioStatus: Status[] = [];
 
   constructor(
     private patrimonioService: PatrimonioService,
@@ -41,20 +38,29 @@ export class FormsPatrimonioComponent implements OnInit {
           (response: Patrimonio) => {
             this.patrimonio = response;
 
-            // Garante que o idSetor seja setado com base no objeto recebido
+            // Carregar setores e status
             this.getSetores(() => {
               if (response.setores) {
                 this.patrimonio.idSetor = response.setores.id;
               }
             });
+
+            this.getStatus(() => {
+              if (response.patrimonioStatus) {
+                this.patrimonio.idStatus = response.patrimonioStatus.id;
+              }
+            });
           },
           error => {
+            console.error('Erro ao carregar patrimônio:', error);
             this.patrimonio = new Patrimonio();
             this.getSetores();
+            this.getStatus();
           }
         );
       } else {
         this.getSetores();
+        this.getStatus();
       }
     });
   }
@@ -67,6 +73,19 @@ export class FormsPatrimonioComponent implements OnInit {
       },
       error => {
         console.error('Erro ao carregar setores:', error);
+      }
+    );
+  }
+
+  getStatus(callback?: () => void) {
+    this.patrimonioService.getStatusAll().subscribe(
+      (response: Status[]) => {
+        console.log('Status carregados:', response);
+        this.patrimonioStatus = response;
+        if (callback) callback();
+      },
+      error => {
+        console.error('Erro ao carregar status:', error);
       }
     );
   }

@@ -66,12 +66,14 @@
         <div class="row">
           <div class="col-md-8">
             <label for="descricao" class="form-label">Descrição</label>
-            <input type="text" class="form-control" id="descricao" placeholder="Descrição do patrimônio" name="descricao" [(ngModel)]="patrimonio.descricao">
+            <input type="text" class="form-control" id="descricao" placeholder="Descrição do patrimônio"
+                   name="descricao" [(ngModel)]="patrimonio.descricao">
           </div>
           <div class="col-md-4">
             <label for="setor" class="form-label">Setor</label>
-            <select class="form-select" id="setor" name="setor" [(ngModel)]="patrimonio.idSetor" required #idSetor="ngModel"
-              [ngClass]="{ 'is-invalid': patrimonioForms.submitted && !patrimonio.idSetor }"
+            <select class="form-select" id="setor" name="setor" [(ngModel)]="patrimonio.idSetor" required
+                    #idSetor="ngModel"
+                    [ngClass]="{ 'is-invalid': patrimonioForms.submitted && !patrimonio.idSetor }"
             >
               <option value="" disabled>Selecione...</option>
               <option *ngFor="let setor of setores" [value]="setor.id">
@@ -86,9 +88,9 @@
 
         <div class="col-md-4">
           <label for="situacao" class="form-label">Situação</label>
-          <select class="form-select" id="situacao" name="situacao" [(ngModel)]="patrimonio.situacao">
+          <select class="form-select" id="situacao" name="situacao" [(ngModel)]="patrimonio.idStatus">
             <option value="" disabled>Selecione...</option>
-            <option *ngFor="let status of situacoes" [value]="status.value">{{ status.viewValue }}</option>
+            <option *ngFor="let situacao of patrimonioStatus" [value]="situacao.id">{{ situacao.descricao }}</option>
           </select>
         </div>
 

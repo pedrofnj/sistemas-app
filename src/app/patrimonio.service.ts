@@ -3,6 +3,7 @@ import {Observable} from 'rxjs';
 import {Patrimonio} from './pages/patrimonio/Patrimonio';
 import {HttpClient} from '@angular/common/http';
 import {Setores} from "./pages/patrimonio/Setores";
+import {Status} from "./pages/patrimonio/Status";
 
 @Injectable({
   providedIn: 'root'
@@ -28,6 +29,10 @@ export class PatrimonioService {
 
   getSetorAll(): Observable<Setores[]> {
     return this.http.get<Setores[]>(`${this.apiUrl}/setores`);
+  }
+
+  getStatusAll(): Observable<Status[]> {
+    return this.http.get<Status[]>(`${this.apiUrl}/status`);
   }
 
 }

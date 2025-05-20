@@ -1,4 +1,5 @@
 import {Setores} from "./Setores";
+import {Status} from "./Status";
 
 export class Patrimonio {
   id?: number;
@@ -11,5 +12,7 @@ export class Patrimonio {
   valor?: string;
   situacao?: string;
   idSetor?: number | null;
+  idStatus?: number | null;
   setores?: Setores; // usado para carregar dados na edição
+  patrimonioStatus?: Status; // usado para carregar dados na edição
 }
