@@ -35,4 +35,8 @@ export class PatrimonioService {
     return this.http.get<Status[]>(`${this.apiUrl}/status`);
   }
 
+  getByCodigo(codigo: number): Observable<Patrimonio> {
+    return this.http.get<Patrimonio>(`${this.apiUrl}/byCodigo/${codigo}`);
+  }
+
 }

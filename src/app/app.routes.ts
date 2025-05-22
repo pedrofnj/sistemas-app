@@ -8,5 +8,5 @@ export const routes: Routes = [
   { path: 'home', component: HomeComponent },
   { path: 'forms-patrimonio', component: FormsPatrimonioComponent },
   { path: 'list-patrimonio', component: ListPatrimonioComponent },
-  { path: 'forms-patrimonio/:id', component: FormsPatrimonioComponent },
+  { path: 'forms-patrimonio/:codigo', component: FormsPatrimonioComponent }
 ];

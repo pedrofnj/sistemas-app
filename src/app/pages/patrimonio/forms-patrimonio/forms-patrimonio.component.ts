@@ -32,13 +32,12 @@ export class FormsPatrimonioComponent implements OnInit {
     this.patrimonio.dataCadastro = new Date().toISOString().split('T')[0];
 
     this.activatedRoute.params.subscribe(urlParams => {
-      const id = urlParams['id'];
-      if (id) {
-        this.patrimonioService.getById(id).subscribe(
+      const codigo = urlParams['codigo'];
+      if (codigo) {
+        this.patrimonioService.getByCodigo(codigo).subscribe(
           (response: Patrimonio) => {
             this.patrimonio = response;
 
-            // Carregar setores e status
             this.getSetores(() => {
               if (response.setores) {
                 this.patrimonio.idSetor = response.setores.id;

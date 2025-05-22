@@ -28,8 +28,7 @@ export class ListPatrimonioComponent implements OnInit {
     });
   }
 
-  editar(id: any) {
-    console.log(id);
-    this.router.navigate(['/forms-patrimonio', id]);
+  editar(codigo: any) {
+    this.router.navigate(['/forms-patrimonio', codigo]);
   }
 }
