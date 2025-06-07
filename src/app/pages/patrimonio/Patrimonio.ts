@@ -6,6 +6,8 @@ export class Patrimonio {
   codigo?: number;
   nome?: string;
   descricao?: string;
+  modelo?: string
+  localizacao?: string;
   dataAquisicao?: string;
   dataCadastro?: string;
   numeroSerie?: string;
