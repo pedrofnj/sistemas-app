@@ -1,0 +1,79 @@
+<main class="mt-5">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-lg-10">
+        <div class="card shadow">
+          <div class="card-header text-center">
+            <h1 class="h4 mb-0">Responsável</h1>
+            <small class="text-muted">
+              {{ responsavel.id ? 'Editar Responsável' : 'Cadastrar Responsável' }}
+            </small>
+          </div>
+          <div class="card-body">
+
+            <div *ngIf="mensagem" class="alert alert-{{tipoMensagem}} text-center" role="alert">
+              {{ mensagem }}
+            </div>
+
+            <form #responsavelForm="ngForm" (ngSubmit)="onSubmit()" class="row g-3" style="margin-top: 20px;">
+              <div class="row">
+                <div class="col-md-8 mb-3">
+                  <label for="nome" class="form-label">Nome *</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="nome"
+                    name="nome"
+                    [(ngModel)]="responsavel.nome"
+                    required
+                    [ngClass]="{'is-invalid': responsavelForm.submitted && !responsavel.nome || nome.touched && !responsavel.nome}"
+                    #nome="ngModel"
+                  >
+                  <div *ngIf="(responsavelForm.submitted && !responsavel.nome) || (nome.touched && !responsavel.nome)" class="invalid-feedback">
+                    O campo Nome é obrigatório.
+                  </div>
+                </div>
+                <div class="col-md-4">
+                  <label for="cpf" class="form-label">CPF *</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="cpf"
+                    name="cpf"
+                    [(ngModel)]="responsavel.cpf"
+                    required
+                    [ngClass]="{'is-invalid': responsavelForm.submitted && !responsavel.cpf || cpf.touched && !responsavel.cpf}"
+                    #cpf="ngModel"
+                  >
+                  <div *ngIf="(responsavelForm.submitted && !responsavel.cpf) || (cpf.touched && !responsavel.cpf)" class="invalid-feedback">
+                    O campo CPF é obrigatório.
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-3 mb-3">
+                  <label for="telefone" class="form-label">Telefone</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="telefone"
+                    name="telefone"
+                    [(ngModel)]="responsavel.telefone"
+                  >
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-12 text-end" style="margin-top: 20px;">
+                  <button type="submit" class="btn btn-primary">
+                    <i class="fa-solid fa-floppy-disk" style="color: #ffffff;"></i> Salvar
+                  </button>
+                </div>
+              </div>
+            </form>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>

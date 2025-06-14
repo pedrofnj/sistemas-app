@@ -1,0 +1,35 @@
+<main class="mt-5">
+  <div class="container">
+    <div class="row">
+      <h1>Responsável</h1>
+      <div class="card">
+        <div class="card-body">
+          Consultar Responsável
+        </div>
+      </div>
+      <table class="table table-hover" style="margin-top: 20px;">
+        <thead class="table-light">
+        <tr>
+          <th scope="col">ID</th>
+          <th scope="col">Nome</th>
+          <th scope="col">CPF</th>
+          <th scope="col">Telefone</th>
+          <th scope="col">Ações</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let responsavel of responsaveis">
+          <td>{{ responsavel.id }}</td>
+          <td>{{ responsavel.nome }}</td>
+          <td>{{ responsavel.cpf }}</td>
+          <td>{{ responsavel.telefone }}</td>
+          <td>
+            <a class="btn btn-primary me-1"><i class="fa-solid fa-eye" style="color: #ffffff;"></i></a>
+            <a class="btn btn-warning me-1"><i class="fa-solid fa-edit" style="color: #ffffff;"></i></a>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</main>
